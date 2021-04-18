@@ -1,0 +1,20 @@
+{
+  "name": "node_js_file_system_task_4",
+  "version": "1.0.0",
+  "description": "This is the second task for the Node JS track on Zuri training. It is a script that will fetch posts from http://jsonplaceholder.typicode.com/posts and write it to posts.json file in result directory using node-fetch.",
+  "main": "index.js",
+  "scripts": {
+    "fetch": "node index.js"
+  },
+  "keywords": [
+    "Zuri training",
+    "Node JS",
+    "Fetch API",
+    "node-fetch"
+  ],
+  "author": "Ayobami Oguntolu (@6amo - on slack)",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
