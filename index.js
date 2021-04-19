@@ -22,12 +22,25 @@ fs.mkdir(path.join(__dirname, "/result"), {}, err => {
   }
 });
 
+// FETCH POSTS FROM http://jsonplaceholder.typicode.com/posts ABD WRITE TO result/posts.json
 // Get all post
 fetch(url)
   .then(res => res.json())
-  .then(data => console.log(`😊 Posts successfuly fetched.\n`,data))
+  .then(data => {
+    // convert data object to JSON, assign to posts 
+    const posts = JSON.stringify(data);
+
+    // write posts to result/posts.json
+    fs.writeFile(path.join(__dirname, "result", "posts.json"), posts, err => {
+      if (err) {
+        throw Error
+      } else {
+        console.log(`> 😊 Posts successfuly fetched.\n> View posts here: ${path.join(__dirname, "result", "posts.json")}`)
+      }
+    })
+  })
   .catch(error => 
-    console.log(`😞 Couldn't fetch the data.`,
+    console.log(`> 😞 Couldn't fetch the data.`,
     `\n Error name: ${error.name}.`,
     `\n Error type: ${error.type}.`,
     `\n Error message: ${error.message}.`
