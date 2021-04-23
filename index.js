@@ -2,27 +2,34 @@ const fetch = require("node-fetch");
 
 const fs = require("fs");
 const path = require("path");
-const url = "http://jsonplaceholder.typicode.com/posts";
+// const url = "http://jsonplaceholder.typicode.com/posts/";
+const url = "https://web.archive.org/web/20210414154459/http://jsonplaceholder.typicode.com/posts/";
 
-// CREATE result/posts.json
-// Create 'result' dir.
+// CHECK IF ./result dir already exist
+const dirName = "./result";
+
+if (fs.existsSync(dirName)) {
+  console.log(`> 😊 ./result directory already exist.\n> View file here: ${path.join(__dirname, "result", "posts.json")}`);
+} else {
+// IF ./result dir does not exist, create 'result' dir.
 fs.mkdir(path.join(__dirname, "/result"), {}, err => {
   if (err) {
     throw Error
   } else {
-      console.log(`> Folder created 😊\n> View folder here: ${path.join(__dirname, "result")}`);
-      // Create 'posts.json' file in 'result' dir.
+      console.log(`> 😊 Folder created.\n> View folder here: ${path.join(__dirname, "result")}`);
+      // Create 'posts.json' file in 'result' dir. './result/posts.json'
       fs.writeFile(path.join(__dirname, "/result", "/posts.json"), "", err => {
         if (err) {
           throw Error
         } else {
-            console.log(`> File created 😊\n> View file here: ${path.join(__dirname, "result", "posts.json")}`);
+            console.log(`> 😊 File created\n> View file here: ${path.join(__dirname, "result", "posts.json")}`);
         }
       });
   }
 });
+}
 
-// FETCH POSTS FROM http://jsonplaceholder.typicode.com/posts ABD WRITE TO result/posts.json
+// FETCH POSTS FROM http://jsonplaceholder.typicode.com/posts AND WRITE TO result/posts.json
 // Get all post
 fetch(url)
   .then(res => res.json())
