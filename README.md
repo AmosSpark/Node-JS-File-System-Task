@@ -12,7 +12,8 @@ This is the second task for the Node JS track on Zuri training. It is a script t
 
 > On running `npm run fetch` or `node index.js`, the script will do the following:
 
-- [x] Create `result` dir in the root.
+- [x] Check if `result` dir already exist in the root.
+- [x] Create `result` dir in the root if doesn't exist.
 - [x] Create `posts.json` file in `result` dir.
 - [x] Fetch posts from [jsonplaceholder](http://jsonplaceholder.typicode.com/posts).
 - [x] Write JSON data fetched from [jsonplaceholder](http://jsonplaceholder.typicode.com/posts) to `result/posts.json` path.
