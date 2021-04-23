@@ -35,7 +35,7 @@ fetch(url)
   .then(res => res.json())
   .then(data => {
     // convert data object to JSON, assign to posts 
-    const posts = JSON.stringify(data);
+    const posts = JSON.stringify(data, null, 2);
 
     // write posts to result/posts.json
     fs.writeFile(path.join(__dirname, "result", "posts.json"), posts, err => {
